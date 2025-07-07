@@ -23,3 +23,8 @@ docker run -it --name dl --net=host --env="DISPLAY" \
 
 ### Test 
 Run the __test.py__. If it shows a 28 x 28 pixel image of the number 9, then it works.
+```
+cd /deep-learning
+ipython
+run test.py
+```
