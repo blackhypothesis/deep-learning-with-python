@@ -1,10 +1,7 @@
 FROM tensorflow/tensorflow
 RUN apt-get update && \
-    apt-get --yes install vim && \
-    apt-get --yes install inetutils-ping && \
-    apt-get --yes install iproute2 && \
-    apt-get --yes install python3-tk
+    apt-get --yes install inetutils-ping iproute2 git vim python3-tk && \
+    git config --global --add safe.directory /deep-learning
 RUN pip install --upgrade pip && \
-    pip install ipython && \
-    pip install matplotlib
-
+    pip install ipython matplotlib
+COPY _bashrc /root/.bashrc
