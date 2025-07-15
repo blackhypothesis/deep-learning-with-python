@@ -32,6 +32,6 @@ run test.py
 
 ## Visual Studio Code
 ### Remote Access To Docker Image
-Install the extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-Press [F1] and search for "Dev Containers: Attatch to Running Container ..."
-Choose the previously started container __deep_learning__.
+* Install the extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+* Press [F1] and search for "Dev Containers: Attatch to Running Container ..."
+* Choose the previously started container __  deep_learning__.
