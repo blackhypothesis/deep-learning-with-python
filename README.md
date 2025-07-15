@@ -17,7 +17,8 @@ This allows to access the X11 server.
 Navigate to the directory, where this git repository was cloned.
 ```bash
 docker run -it --name dl --net=host --env="DISPLAY" \
-    --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --volume="$(pwd):/deep-learning:rw" blackhypothesis/deep-learning:latest bash
+    --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --volume="$(pwd):/deep-learning:rw" \
+    --name deep_learning blackhypothesis/deep-learning:latest bash 
 ```
 Now you can access the code within the docker container in the directory `/deep-learning`.
 
@@ -28,3 +29,9 @@ cd /deep-learning
 ipython
 run test.py
 ```
+
+## Visual Studio Code
+### Remote Access To Docker Image
+Install the extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+Press [F1] and search for "Dev Containers: Attatch to Running Container ..."
+Choose the previously started container __deep_learning__.
