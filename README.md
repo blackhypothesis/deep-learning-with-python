@@ -16,7 +16,7 @@ This allows to access the X11 server.
 ### Run docker container
 Navigate to the directory, where this git repository was cloned.
 ```bash
-docker run -it --name dl --net=host --env="DISPLAY" --user $(id -u):$(id -g) \
+docker run -it --name deep_learning --net=host --env="DISPLAY" --user $(id -u):$(id -g) \
     --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --volume="$(pwd):/deep-learning:rw" \
     --name deep_learning blackhypothesis/deep-learning:latest bash 
 ```
