@@ -30,6 +30,9 @@ ipython
 run test.py
 ```
 
+## Python Notebooks
+see [Github: fchollet/deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks)
+
 ## Visual Studio Code
 ### Remote Access To Docker Image
 * Install the extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
