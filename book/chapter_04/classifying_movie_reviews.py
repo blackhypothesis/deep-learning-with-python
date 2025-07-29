@@ -58,9 +58,7 @@ loss_values = history_dict["loss"]
 val_loss_values = history_dict["val_loss"]
 epochs = range(1, len(loss_values) + 1)
 plt.plot(epochs, loss_values, "r--", label="Training loss")
-#1
 plt.plot(epochs, val_loss_values, "b", label="Validation loss")
-#2
 plt.title("[IMDB] Training and validation loss")
 plt.xlabel("Epochs")
 plt.xticks(epochs)
@@ -79,4 +77,16 @@ plt.xlabel("Epochs")
 plt.xticks(epochs)
 plt.ylabel("Accuracy")
 plt.legend()
+plt.show()
+
+
+figure, axis = plt.subplots(1, 2)
+axis[0].set_title("[IMDB] Training and validation loss")
+axis[0].plot(epochs, loss_values, "r--", label="Training loss")
+axis[0].plot(epochs, val_loss_values, "b", label="Validation loss")
+
+axis[1].set_title("IMDB] Training and validation accuracy")
+axis[1].plot(epochs, acc, "r--", label="Training acc")
+axis[1].plot(epochs, val_acc, "b", label="Validation acc")
+
 plt.show()
