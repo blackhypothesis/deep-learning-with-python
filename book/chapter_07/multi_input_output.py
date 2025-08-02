@@ -1,5 +1,5 @@
 import os
-os.environ["KERAS_BACKEND"] = "torch"
+os.environ["KERAS_BACKEND"] = "tensorflow"
 import numpy as np
 
 import keras
@@ -13,18 +13,23 @@ title = keras.Input(shape=(vocabulary_size,), name="title")
 text_body = keras.Input(shape=(vocabulary_size,), name="text_body")
 tags = keras.Input(shape=(num_tags,), name="tags")
 
-features = layers.Concatenate()([title, text_body, tags])
-
+features = layers.Concatenate(name="concat")([title, text_body, tags])
 features = layers.Dense(64, activation="relu", name="dense_features")(features)
-priority = layers.Dense(1, activation="sigmoid", name="priority")(features)
 
-department = layers.Dense(
-num_departments, activation="softmax", name="department")(features)
+priority = layers.Dense(1, activation="sigmoid", name="priority")(features)
+department = layers.Dense(num_departments, activation="softmax", name="department")(features)
 
 
 model = keras.Model(
     inputs=[title, text_body, tags],
     outputs=[priority, department],
+)
+
+features = model.layers[4].output
+difficulty = layers.Dense(3, activation="softmax", name="difficulty")(features)
+
+new_model = keras.Model(
+    inputs=[title, text_body, tags], outputs=[priority, department, difficulty]
 )
 
 num_samples = 128
@@ -67,5 +72,18 @@ keras.utils.plot_model(
     model,
     "ticket_classifier_with_shape_info.png",
     show_shapes=True,
+    show_dtype=True,
     show_layer_names=True,
+    show_layer_activations=True,
+    show_trainable=True,
+)
+
+keras.utils.plot_model(
+    new_model,
+    "new_ticket_classifier_with_shape_info.png",
+    show_shapes=True,
+    show_dtype=True,
+    show_layer_names=True,
+    show_layer_activations=True,
+    show_trainable=True,
 )
