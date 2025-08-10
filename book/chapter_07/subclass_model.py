@@ -31,3 +31,23 @@ priority, department = model(
     {"title": title_data, "text_body": text_body_data, "tags": tags_data}
 )
 
+model.compile(
+    optimizer="adam",
+    loss=["mean_squared_error", "sparse_categorical_crossentropy"],
+    metrics=[["mean_absolute_error"], ["accuracy"]],
+)
+
+model.fit(
+    {"title": title_data, "text_body": text_body_data, "tags": tags_data},
+    [priority_data, department_data],
+    epochs=1,
+)
+
+model.evaluate(
+    {"title": title_data, "text_body": text_body_data, "tags": tags_data},
+    [priority_data, department_data],
+)
+
+priority_preds, department_preds = model.predict(
+    {"title": title_data, "text_body": text_body_data, "tags": tags_data}
+)
